@@ -1,23 +1,23 @@
-### Script para colocar ao criar uma instancia ec2, visando deixar a maquina preparada para receber arquivos docker e docker compose, este script sera rodado ao ser gerada a instancia.
+## Este é um script para se usar ao criar uma instancia ec2, visando deixar a maquina preparada para receber arquivos docker e docker compose, este script sera rodado ao ser gerada a instancia caso seja utilizado nas configurações avançadas em Dados de Usuario. Utilizar preferencialmente uma instancia Linux Ubuntu.
 
-#### Amazon Linux 
+### Amazon Linux 
 ```
-sudo yum update -y && sudo yum install docker -y && sudo usermod -a -G docker ec2-user && sudo service docker start && newgrp docker && sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
-
-sudo yum update -y
-
-sudo rm /usr/local/bin/docker-compose
-sudo ln -s /Applications/Docker.app/Contents/Resources/cli-plugins/docker-compose /usr/local/bin/docker-compose
-
-```
-
-### Depois de criado a instancia, enviar os arquivos para a criação do container com as imagens do projeto 
+  sudo yum update -y && sudo yum install docker -y && sudo usermod -a -G docker ec2-user && sudo service docker start && newgrp docker && sudo curl -L   https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
+  
+  sudo yum update -y
+  
+  sudo rm /usr/local/bin/docker-compose
+  sudo ln -s /Applications/Docker.app/Contents/Resources/cli-plugins/docker-compose /usr/local/bin/docker-compose
 
 ```
-sudo scp -i chave.pem -r docker-compose.yml nginx env ec2-user@IP_DA_INSTANCIA:/home/ec2-user
+
+#### Depois de criado a instancia, enviar os arquivos para a criação do container com as imagens do projeto 
+
+```
+  sudo scp -i chave.pem -r docker-compose.yml nginx env ec2-user@IP_DA_INSTANCIA:/home/ec2-user
 ```
 
-#### Amazon Ubuntu 
+### Amazon Linux Ubuntu
 
 ```
   # Add Docker's official GPG key:
@@ -47,4 +47,15 @@ sudo scp -i chave.pem -r docker-compose.yml nginx env ec2-user@IP_DA_INSTANCIA:/
  docker compose version
 ```
 
+#### Depois de instalado, 
+
+```
+  sudo scp -i chave.pem -r docker-compose.yml nginx env ec2-user@IP_DA_INSTANCIA:/home/ec2-user
+```
+
+#### rodar docker compose para testar: 
+
+```
+ sudo docker compose up --build
+```
 
