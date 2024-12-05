@@ -1,4 +1,4 @@
-# Criando Instancia utilizando o Free Tier da AWS
+# Criando Instancia utilizando o Free Tier da AWS + Docker pré instalado
 
 ### Imagem de máquina da Amazon
 Estarei utilizando a maquina Linux Ubuntu, pela familiaridade, mas também outras opções no free tier, uma das mais usadas é a Amazon linux, que utiliza o gerenciador de pacotes yum. 
