@@ -79,11 +79,13 @@ Atualize novamente os pacotes
 
 Envie os arquivos necessarios para subir seu container. 
 
-Se caso você não tiver gerado a imagem e subido no Docker Hub, este passo a passo pode te ajudar. 
+Se caso você não tiver gerado a imagem e subido no Docker Hub, este [passo a passo](https://github.com/eliascastrosousa/gerar-imagem-docker-hub) pode te ajudar. 
 Arquivos a serem enviados: 
 - diretorio env (com os arquivos app.env e mysql.env)
 - docker-compose.yml
 - diretorio nginx (onde estará o arquivo nginx.conf para o proxy reverso)
+  
+( nos arquivos deste repositorio tem exemplos dos arquivos a serem utilizados. )
 
 ```
   sudo scp -i chave-sgb.pem -r env nginx docker-compose.yml  USUARIO@IP_DA_INSTANCIA:/home/usuario
