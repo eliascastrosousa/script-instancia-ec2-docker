@@ -58,8 +58,20 @@ sudo usermod -aG docker ubuntu
 newgrp docker
 
 ```
+Após finalizar este passo a passo, a maquina será inicializada e estara disponivel em seu console EC2.
 
-Se caso ainda assim a instancia iniciar sem o docker compose, instale com o seguinte comando: 
+
+
+Utilize este [passo a passo](https://github.com/eliascastrosousa/registrar-dominio-instancia-aws) para registrar um IP Fixo para sua nova instancia e registrar um dominio. 
+
+
+### Acessando a maquina atravez do SSH
+
+```
+  sudo ssh -i chave-sgb.pem USUARIO@IP_DA_INSTANCIA ou DOMINIO 
+```
+
+Se caso a instancia iniciar sem o docker compose, instale com o seguinte comando: 
 
 ```
   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
@@ -71,9 +83,13 @@ Atualize novamente os pacotes
  sudo apt-get update
 ```
 
+Verifique as instalações
+
 ```
- docker compose version
+docker --version && git --version && docker-compose --version && docker compose version
 ```
+![image](https://github.com/user-attachments/assets/f5a5f8c0-395e-4cd0-88c9-ea28a49ee77e)
+
 
 ### Osquestrando o container
 
@@ -89,12 +105,6 @@ Arquivos a serem enviados:
 
 ```
   sudo scp -i chave-sgb.pem -r env nginx docker-compose.yml  USUARIO@IP_DA_INSTANCIA:/home/usuario
-```
-
-Acessando a maquina atravez do SSH
-
-```
-  sudo ssh -i chave-sgb.pem USUARIO@IP_DA_INSTANCIA
 ```
 
 Rodando docker compose para construir os constainers e testar a aplicação 
